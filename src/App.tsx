@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./screens/HomeScreen";
 import WatchListScreen from "./screens/WatchListScreen";
-import AboutScreen from "./screens/AboutScreen";
 import Navbar from "./components/Navbar";
+import PlannerScreen from "./screens/PlannerScreen";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/watchList" element={<WatchListScreen />} />
-          <Route path="/about" element={<AboutScreen />} />
+          <Route path="/planner" element={<PlannerScreen />} />
         </Routes>
       </BrowserRouter>
     </>
