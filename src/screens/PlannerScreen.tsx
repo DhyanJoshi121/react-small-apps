@@ -1,5 +1,6 @@
 import { X } from "lucide-react";
 import React, { useState } from "react";
+import SelectFavPlaces from "../components/SelectFavPlaces";
 
 type plan = {
   title: string;
@@ -9,6 +10,7 @@ type plan = {
 const PlannerScreen = () => {
   const [plans, setPlans] = useState<plan[]>([]);
   const [inputVal, setInputVal] = useState<string>("");
+  const [open, setOpen] = useState(true);
 
   const handleOnClickAdd = () => {
     if (!inputVal) return;
@@ -30,13 +32,15 @@ const PlannerScreen = () => {
   };
 
   return (
-    <div className="w-auto border rounded-lg h-[60vh] mx-10 flex flex-col items-center py-2  overflow-scroll">
+    <div className="w-auto border rounded-lg  min-h-max mx-10 flex flex-col items-center py-2  overflow-hidden">
       <h1>Add your planes here</h1>
+      <SelectFavPlaces open={open} setOpen={setOpen} />
       <div className="mt-5 flex gap-4">
         <input
           type="text"
           placeholder="Enter your plan here"
           value={inputVal}
+          onKeyDown={(e) => e.code === "Enter" && handleOnClickAdd()}
           onChange={(e) => setInputVal(e.target.value)}
           className="border p-2 w-[40vw] rounded-sm"
         />
